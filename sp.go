@@ -3,43 +3,45 @@ package sp
 import (
 	"bufio"
 	"fmt"
-	"os"
+	"io"
 	"strconv"
 	"strings"
 	"time"
 )
 
 type YamlDataSet struct {
-	Input *os.File
+	Input io.Reader
 }
 
-func (r YamlDataSet) String() string {
-	yml, err := convert(r)
+func (yml YamlDataSet) String() string {
+	s, err := yml.convert()
 	if err != nil {
 		return fmt.Sprintln(err)
 	}
-	return yml
+	return s
 }
 
-func convert(r YamlDataSet) (string, error) {
-	input := bufio.NewScanner(r.Input)
-	input.Scan()
-	header := strings.Split(input.Text(), "\t")
+func (yml YamlDataSet) convert() (string, error) {
+	var header []string
+	var s string
 
-	var yml string
-
+	input := bufio.NewScanner(yml.Input)
 	for input.Scan() {
 		if err := input.Err(); err != nil {
 			return "", err
 		}
-		yml += fmt.Sprintln("-")
-		cols := strings.Split(input.Text(), "\t")
-		for i, v := range cols {
-			yml += fmt.Sprintf("  %s: %s\n", header[i], quote(v))
+		columns := strings.Split(input.Text(), "\t")
+		if len(header) == 0 || header[0] == "" {
+			header = columns
+			continue
+		}
+		s += fmt.Sprintln("-")
+		for i, v := range columns {
+			s += fmt.Sprintf("  %s: %s\n", header[i], quote(v))
 		}
 	}
 
-	return yml, nil
+	return s, nil
 }
 
 func quote(s string) string {
