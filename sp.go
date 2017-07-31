@@ -10,7 +10,11 @@ import (
 )
 
 type YamlDataSet struct {
-	Input io.Reader
+	input io.Reader
+}
+
+func New(in io.Reader) *YamlDataSet {
+	return &YamlDataSet{in}
 }
 
 func (yml YamlDataSet) String() string {
@@ -25,7 +29,7 @@ func (yml YamlDataSet) convert() (string, error) {
 	var header []string
 	var s string
 
-	input := bufio.NewScanner(yml.Input)
+	input := bufio.NewScanner(yml.input)
 	for input.Scan() {
 		if err := input.Err(); err != nil {
 			return "", err
