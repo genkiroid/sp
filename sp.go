@@ -57,5 +57,8 @@ func quote(s string) string {
 	if _, err := strconv.ParseFloat(s, 64); err == nil {
 		return s
 	}
+	if s == "NULL" {
+		return ""
+	}
 	return strconv.Quote(s)
 }
