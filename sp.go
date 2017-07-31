@@ -13,7 +13,7 @@ type YamlDataSet struct {
 	input io.Reader
 }
 
-func New(in io.Reader) *YamlDataSet {
+func NewYamlDataSet(in io.Reader) *YamlDataSet {
 	return &YamlDataSet{in}
 }
 

@@ -15,7 +15,7 @@ id	name	age	created_at
 3	Carol	22.0	20170729
 4	Dan	30	2017-07-29
 `)
-	var yml = sp.New(r)
+	var yml = sp.NewYamlDataSet(r)
 	fmt.Printf("%s", yml)
 	// Output:
 	// -

@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	var yml = sp.New(os.Stdin)
+	var yml = sp.NewYamlDataSet(os.Stdin)
 	fmt.Printf("%s", yml)
 }
