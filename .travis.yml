@@ -5,3 +5,5 @@ install:
   - go get github.com/genkiroid/sp/...
 script:
   - go test -v
+notifications:
+  email: false
