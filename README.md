@@ -1,5 +1,7 @@
 # sp
 
+[![Build Status](https://travis-ci.org/genkiroid/sp.svg?branch=master)](https://travis-ci.org/genkiroid/sp)
+
 Generate PHPUnit Yaml Dataset row format from TSV.
 
 ## Installation
