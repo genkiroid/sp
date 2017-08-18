@@ -41,7 +41,7 @@ func (yml YamlDataSet) convert() (string, error) {
 		}
 		s += fmt.Sprintln("-")
 		for i, v := range columns {
-			s += fmt.Sprintf("  %s: %s\n", header[i], quote(v))
+			s += fmt.Sprintf("%*s%s: %s\n", 2, "", header[i], quote(v))
 		}
 	}
 
