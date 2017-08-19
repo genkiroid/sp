@@ -17,7 +17,7 @@ func NewYamlDataSet(in io.Reader) *YamlDataSet {
 	return &YamlDataSet{in}
 }
 
-func (yml YamlDataSet) String() string {
+func (yml *YamlDataSet) String() string {
 	s, err := yml.convert()
 	if err != nil {
 		return fmt.Sprintln(err)
@@ -25,7 +25,7 @@ func (yml YamlDataSet) String() string {
 	return s
 }
 
-func (yml YamlDataSet) convert() (string, error) {
+func (yml *YamlDataSet) convert() (string, error) {
 	var header []string
 	var s string
 
