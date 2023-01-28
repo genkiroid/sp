@@ -1,6 +1,6 @@
 # sp
 
-[![Build Status](https://travis-ci.org/genkiroid/sp.svg?branch=master)](https://travis-ci.org/genkiroid/sp)
+[![build](https://github.com/genkiroid/sp/actions/workflows/ci.yml/badge.svg)](https://github.com/genkiroid/sp/actions/workflows/ci.yml)
 
 Generate PHPUnit Yaml Dataset row format from TSV.
 
